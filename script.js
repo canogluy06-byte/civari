@@ -640,10 +640,13 @@ function findNearMe(){
 function initMap(){
     if(map) return;
     // Temiz, minimal, premium harita (CartoDB Positron) — marka paletiyle uyumlu
-    const tileUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
     map=L.map('leaflet-map',{zoomControl:false}).setView([centerPos.lat,centerPos.lng],13);
     L.control.zoom({position:'topleft'}).addTo(map);
-    L.tileLayer(tileUrl,{attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:20}).addTo(map);
+    /* Harita altlığı: OpenStreetMap (ücretsiz, anahtar gerektirmez).
+       Not: CARTO döşemeleri artık API anahtarı istiyor ve harita üzerine
+       "API KEY REQUIRED" filigranı basıyordu — bu yüzden OSM'ye geçildi. */
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {attribution:'&copy; OpenStreetMap katkıcıları', maxZoom:19}).addTo(map);
     // Kümeleme (binlerce pin için şart) + örümcek ağı (spiderfy) yakınlaşınca
     markersLayer = (typeof L.markerClusterGroup === 'function')
         ? L.markerClusterGroup({

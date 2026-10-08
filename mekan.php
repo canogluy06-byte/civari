@@ -232,8 +232,8 @@ if ($avg !== null && count($reviews) > 0) {
 <link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,mail@example.com,400..800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/mail@example.com/dist/leaflet.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/leaflet.css">
 <script type="application/ld+json"><?= json_encode($ld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?></script>
 <!-- Ölçüm kodu yalnızca çerez onayı verilmişse yüklenir (cerez.js) -->
 <script>window.CİVARİ_GA_ID = 'G-4MY8MMLRQX';</script>
@@ -465,7 +465,7 @@ if ($avg !== null && count($reviews) > 0) {
   <img id="gBuyutResim" src="" alt="">
 </div>
 
-<script src="https://unpkg.com/mail@example.com/dist/leaflet.js"></script>
+<script src="vendor/leaflet.js"></script>
 <script>
   /* Galeri: oklarla kaydırma + tam ekran görüntüleme */
   function civariBuyut(src){
@@ -501,8 +501,8 @@ if ($avg !== null && count($reviews) > 0) {
   (function(){
     var lat = <?= (float)$venue['lat'] ?>, lng = <?= (float)$venue['lng'] ?>;
     var map = L.map('map', { scrollWheelZoom:false }).setView([lat, lng], 16);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-      { attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:20 }).addTo(map);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      { attribution:'&copy; OpenStreetMap katkıcıları', maxZoom:19 }).addTo(map);
     L.circleMarker([lat, lng], { radius:11, color:'#fff', weight:3, fillColor:'<?= e($renk) ?>', fillOpacity:1 })
       .addTo(map).bindTooltip(<?= json_encode($ad, JSON_UNESCAPED_UNICODE) ?>, { direction:'top', offset:[0,-12] });
   })();

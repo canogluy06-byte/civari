@@ -62,8 +62,8 @@ $GUNLER = ['Mo'=>'Pazartesi','Tu'=>'Salı','We'=>'Çarşamba','Th'=>'Perşembe',
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,mail@example.com,400..800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/mail@example.com/dist/leaflet.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/leaflet.css">
 <style>
   :root{ --primary:#ff9900; --primary-dark:#e07f00; --ink:#1c1c1e; --muted:#64748b; --gray:#d2d2d1;
          --bg:#f7f7f8; --card:#fff; --ok:#15803d; --ok-bg:#dcfce7; --bekle:#b45309; --bekle-bg:#fef3c7;
@@ -434,7 +434,7 @@ $GUNLER = ['Mo'=>'Pazartesi','Tu'=>'Salı','We'=>'Çarşamba','Th'=>'Perşembe',
 
 <div id="bildirim" role="status" aria-live="polite"></div>
 
-<script src="https://unpkg.com/mail@example.com/dist/leaflet.js"></script>
+<script src="vendor/leaflet.js"></script>
 <script>
 const CSRF = <?= json_encode($csrf) ?>;
 const GUN_KODLARI = <?= json_encode(array_keys($GUNLER)) ?>;
@@ -464,8 +464,8 @@ let harita, pin;
   const merkez = varMi ? [lat, lng] : ANKARA;
 
   harita = L.map('harita', { scrollWheelZoom:false }).setView(merkez, varMi ? 17 : 13);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    { attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:20 }).addTo(harita);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    { attribution:'&copy; OpenStreetMap katkıcıları', maxZoom:19 }).addTo(harita);
 
   const ikon = L.divIcon({
     html:'<div style="width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#ff9900;border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.35)"></div>',
